@@ -1,0 +1,22 @@
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom'
+import Home from './pages/home';
+import map from './pages/map';
+import roulette from './pages/roulette';
+import selectmenu from './pages/selectMenu';
+import './App.css';
+
+import Header from './header/header'; //헤더파일 넣기
+
+const App=()=>{
+    return (
+        <>
+           <Route component={Home} path="/" exact="true"></Route>
+           <Route component={selectmenu} path="/selectMenu"></Route>
+           <Route component={roulette} path="/roulette"></Route>
+           <Route component={map} path="/map"></Route>
+        </>
+    );
+};
+
+export default App;

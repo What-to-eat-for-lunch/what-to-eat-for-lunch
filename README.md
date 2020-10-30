@@ -7,13 +7,14 @@
   * Boostrap : 
   * node : v14.15.0 / npm : 6.14.8 (lts)
   * react : v17.0.1
-  * jquery : v3.5.1
+  * jquery : v3.5.1d
 * Back-end
   * python : v3.8.5
   * django : v3.1.2
   * django-rest-framework : v3.12.1
   * markdown : v3.3.1
   * django-filter : v2.4.0
+  * django-cors-headers : v3.5.0
 
 
 ## Install

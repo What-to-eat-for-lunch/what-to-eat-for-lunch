@@ -5,6 +5,7 @@ import {TweenLite } from 'gsap';
 import { Sine } from '../../node_modules/gsap/gsap-core';
 import { Linear } from '../../node_modules/gsap/gsap-core';
 import {confirmAlert} from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import $ from 'jquery';
 import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
@@ -22,9 +23,8 @@ class roulette extends Component{
                      <div class="board_start join">시작버튼</div>
                        <div class="board_on obj"></div>         
                 </div>
-                <a href='map'>지도</a>
                 <h3 id="result"></h3>
-                <div id="mapButton"></div>
+                <span id="mapButton"></span>
        
              </div>
             </div>
@@ -49,12 +49,15 @@ class roulette extends Component{
 
       TweenLite.to($(".board_on"), 360, {css:{rotation:-4000}, ease: Linear.easeNone});//움직임 없애기
 
+      //룰렛 돌린 후 메소드
       function endGame(){
        var  copImg= "http://img.babathe.com/upload/specialDisplay/htmlImage/2019/test/coupon"+( data +1) + ".png";
          console.log("이미지 : " + copImg );
-       $('#result').text("결과:"+copImg);
-
-       var str='<input type="button" id="btn" value="맛집 추천 지도"/>';
+       
+         //룰렛 하단에 추천 음식 결과 출력
+         $('#result').text("결과:"+copImg);
+        //map.js로 이동하는 버튼 생성
+       var str='<a href="/map"><button>맛집 추천 지도</button></a>';
        $('#mapButton').html(str);
       };
 
@@ -66,7 +69,7 @@ class roulette extends Component{
          $(".board_on").append('<img  src="' + pictures + '" />');
        }
    
-       $(".join").on("mousedown",function(){
+       $(".join").on("mousedown",function(e){
          if( clicked <= 0){    iniGame(Math.floor(Math.random() *6));    }
          else  if( clicked >=1 ){   
            confirmAlert({
@@ -79,8 +82,10 @@ class roulette extends Component{
                   $('#mapButton').append();}
                 },{
                  label:'아니오',
-                 onClick:()=>{this.preventDefault();}
-               },
+                 onClick:function(){
+                   e.preventDefault();
+                  }
+                 }
              ]
             });
            }

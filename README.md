@@ -35,20 +35,20 @@ F : Front-end / B : Back-end
 🐰 : 유혜림
 |분류|요구사항|상세|구현|담당|
 |:--:|:--:|:--|--|--|
-|Front|페이지 디자인|페이지 상세 디자인|:check:|🐰| 
-|F-01-01| 사용자 위치 설정|사용자의 위도, 경도를 얻어온다.|:check:|🐰|
-|F-01-02| 분류 선택 | 같이 먹기, 다이어트, 디저트 분류 선택|:check:|🐰|
+|Front|페이지 디자인|페이지 상세 디자인|:heavy_check_mark:|🐰| 
+|F-01-01| 사용자 위치 설정|사용자의 위도, 경도를 얻어온다.|:heavy_check_mark:|🐰|
+|F-01-02| 분류 선택 | 같이 먹기, 다이어트, 디저트 분류 선택|:heavy_check_mark:|🐰|
 |F-01-03| 음식 분류 출력 | 선택한 분류 기준으로 음식 장르를 출력해준다. |:x:||
 |F-02-01| 음식 세부 분류 선택 | 현재 위치 주변 선택한 장르에 해당하는 2차 분류 출력|:x:||
 |F-02-02| 세부 랜덤 선택 | 선택이 어려운 사람들을 위한 랜덤 기능|:x:||
-|F-02-03| 룰렛| 룰렛을 돌려 랜덤으로 음식 메뉴 선택 |:o:|🐰|
+|F-02-03| 룰렛| 룰렛을 돌려 랜덤으로 음식 메뉴 선택 |:heavy_check_mark:|🐰|
 |F-03-01| 주변 음식점 출력 | 선택한 분류에 해당하는 주변 음식점 리스트 출력|:x:||
 |F-03-02| 지도 API | 리스트에서 선택한 가게 위치를 지도상으로 보여준다 | :x: ||
-|Back|카카오 맵 API|카카오 맵을 이용한 데이터 크롤링|:check:|🐵|
-|Back|통신 클래스|카카오 API와 REST API를 주고받는 클래스 설계|:check:|🐵|
-|Back|파서 클래스|통신 클래스를 통해 받은 데이터를 가공 후 전송 |:check:|🐵|
+|Back|카카오 맵 API|카카오 맵을 이용한 데이터 크롤링|:heavy_check_mark:|🐵|
+|Back|통신 클래스|카카오 API와 REST API를 주고받는 클래스 설계|:heavy_check_mark:|🐵|
+|Back|파서 클래스|통신 클래스를 통해 받은 데이터를 가공 후 전송 |:heavy_check_mark:|🐵|
 |Back|RESTful API | 프론트와 통신하는 RESTful API 규약 설계|:x:|🐵|
-|Back|Django rest framework | Django rest framework 적용|:check:|🐵|
+|Back|Django rest framework | Django rest framework 적용|:heavy_check_mark:|🐵|
 |Back|React - Django 연동 | 연동 | :x: | 🐵|
 
 

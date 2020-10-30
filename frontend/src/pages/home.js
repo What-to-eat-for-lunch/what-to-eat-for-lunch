@@ -3,14 +3,17 @@ import React from 'react';
 import '../components/css/home.css';
 import '../components/css/carousel.css';
 import { Link } from 'react-router-dom';
+import Header from '../header/header';
+import Footer from '../footer/footer';
 
 
 const Home=()=>{
-    return <div className="container marketing">
-    <div className="header" >
+    return <div className="container">
+      
+    <Header>
         <h2><Link to="/">점심뭐먹지?</Link></h2>
         <hr/>
-    </div>
+    </Header>
     <div className="row">
       <div className="col-lg-4">
         <table>
@@ -50,6 +53,7 @@ const Home=()=>{
         </table>        
       </div>
     </div>
+    <Footer/>
 
   </div>;
 }

@@ -1,35 +1,21 @@
 //룰렛 화면
 import React,{ Component } from 'react';
 import '../components/css/roulette.css';
+import '../components/common/Button.css';
 import {TweenLite } from 'gsap';
 import { Sine } from '../../node_modules/gsap/gsap-core';
 import { Linear } from '../../node_modules/gsap/gsap-core';
 import {confirmAlert} from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import { Link } from 'react-router-dom';
+import Header from '../header/header';
+import Footer from '../footer/footer';
 import $ from 'jquery';
 import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
 
 
 class roulette extends Component{  
-    //컴포넌트를 DOM에 부착(렌더링)
-    render(){
-        return(
-            <div id="contents">
-              <h2>혼밥 룰렛</h2>
-      
-                <div id="wrap">
-                <div id="gameContainer">    
-                     <div class="board_start join">시작버튼</div>
-                       <div class="board_on obj"></div>         
-                </div>
-                <h3 id="result"></h3>
-                <span id="mapButton"></span>
-       
-             </div>
-            </div>
-        );
-    }
 
     //렌더링 완료 후 실행되는 메소드
     componentDidMount(){
@@ -45,7 +31,7 @@ class roulette extends Component{
          console.log("data 숫자:"+(data+1)+"rotationPos"+rotationPos);
       };
 
-      var rotationPos = new Array(60,120,180,240,300,360);
+      var rotationPos = [60,120,180,240,300,360];
 
       TweenLite.to($(".board_on"), 360, {css:{rotation:-4000}, ease: Linear.easeNone});//움직임 없애기
 
@@ -93,6 +79,32 @@ class roulette extends Component{
        });
    });
  }
+    //컴포넌트를 DOM에 부착(렌더링)
+    render(){
+      return(
+          <div id="contents">
+            <Header>
+              <h2><Link to="/">점심뭐먹지?</Link></h2>
+               <hr/>
+             </Header>
+        <Link to="/"> 
+                <button class="previous_step">이전단계로 돌아가기</button>
+        </Link>
+        <h2 style={{textAlign:'center'}}>혼밥룰렛</h2>
+
+              <div id="wrap">
+              <div id="gameContainer">    
+                  <div class="board_start join">시작버튼</div>
+                    <div class="board_on obj"></div>         
+              </div>
+              <h3 id="result"></h3>
+              <span id="mapButton"></span>
+    
+          </div>
+          <footer/>
+          </div>
+      );
+    }
 }
 
 export default roulette;

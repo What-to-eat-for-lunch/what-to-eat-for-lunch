@@ -22,7 +22,7 @@ const selectMenu=()=>{
             <button>양식</button><br/>
             <button>일식</button><br/>
         </div>
-        <footer></footer>
+        <Footer/>
     </div>;
 }
 

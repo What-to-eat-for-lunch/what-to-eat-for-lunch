@@ -4,10 +4,11 @@
 
 ## 사용 기술/버전
 * Front-end
-  * Boostrap : 
-  * node : v14.15.0 / npm : 6.14.8 (lts)
-  * react : v17.0.1
+  * Boostrap : V4.5.3
+  * node : v14.15.0 / npm : 6.14.8 (lts) / yarn : v.1.22.10
+  * react : v17.0.1 / react-router-dom: v5.2.0
   * jquery : v3.5.1
+  * gsap :  v3.5.1
 * Back-end
   * python : v3.8.5
   * django : v3.1.2
@@ -20,7 +21,15 @@
 ```
    npm update
 ```
-
+### Frontend
+```
+   npm install -g yarn
+   npm install -g create-react-app
+   npm install --save bootstrap (or yarn add bootstrap)
+   npm install react-router-dom --save
+   npm install gsap
+   
+```
 ### Backend
 ```
    pip install Django
@@ -66,7 +75,12 @@ F : Front-end / B : Back-end
    **🐰 유혜림**
    - [x] 지도 제외 및 FE 페이지 틀 구현
    - [x] MTV 모델 기반 디자인
-   - [ ] React.js 연동
+   - [x] React.js 연동
+   - [x] 카카오 지도 연동
+   - [x] 부트스트랩 
+   - [x] 룰렛이벤트 구현
+   - [ ] 사용자의 현위치 받아오기
+   - [ ] 최종 디자인 
 
    **🐵 이동호**
    - [x] BE 데이터 크롤링 테스트 - (카카오 MAP API)

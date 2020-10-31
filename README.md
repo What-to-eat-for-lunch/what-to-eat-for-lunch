@@ -76,7 +76,7 @@ F : Front-end / B : Back-end
    - [x] 지도 제외 및 FE 페이지 틀 구현
    - [x] MTV 모델 기반 디자인
    - [x] React.js 연동
-   - [x] 카카오 MAP API 연동
+   - [x] 카카오 MAP API 연동-키워드 장소 검색 가능
    - [x] 부트스트랩 
    - [x] F-02-03
    - [ ] F-01-01

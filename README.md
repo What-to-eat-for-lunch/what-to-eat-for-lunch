@@ -1,6 +1,7 @@
 # 점심 뭐 먹지? (What to eat for lunch)
 
 본 프로젝트는 점심 메뉴 선택을 어려워하는 사람들을 위해 기획된 웹 어플리케이션이다. 사용자의 현재 위치 기반으로 주변 음식점을 탐색하며, 선택이 힘들 땐 룰렛 게임 기능으로 선택을 대신해주는 서비스를 제공한다. 최종적으로 선택한 분류에 해당하는 주변 음식점을 지도 API를 이용하여 출력한다.   
+<hr>
 
 ## 사용 기술/버전
 * Front-end
@@ -20,6 +21,7 @@
   * django-filter : v2.4.0
   * django-cors-headers : v3.5.0
 
+<hr>
 
 ## Install
 ```
@@ -33,6 +35,7 @@
 ```
    python manage.py runserver 8000
 ```
+<hr>
 
 ## 요구사항
 F : Front-end / B : Back-end   
@@ -58,10 +61,9 @@ F : Front-end / B : Back-end
 |Back|Django rest framework | Django rest framework 적용|:heavy_check_mark:|🐵|
 |Back|React - Django 연동 | 연동 | :heavy_check_mark: | 🐵|
 
+ <hr>
 
 ## REST API
-
-## 순서도
 |Method|URL|View|설명|
 |--|--|--|--|
 |GET|/genere/[genretype]/[lat]/[lng]|genre_view.as_view()|**genretype : 1차 분류** <br> 2차 분류 크롤링 결과를 반환한다.|
@@ -71,10 +73,11 @@ F : Front-end / B : Back-end
   - 1차 분류 : 한식, 일식, 양식, 중식 ...
   - 2차 분류 : 고기, 샌드위치, 피자, 돈까스 ...
 
+<hr>  
 
 ## 상세 페이지 디자인
 * 2020.10.31. 업로드 예정
-
+<hr>   
 
 ## 일정
 * 2020.10.26 24:00 -> 3차 과제 마감
@@ -102,8 +105,12 @@ F : Front-end / B : Back-end
    - [x] RESTful API 설계
    - [x] F-01-03 : popover 
    - [x] sub category random
-   - [ ] page redirect
-   - [ ] data save
+   - [X] page redirect
+   - [x] vegan -> map
+   - [x] 현재 위치 자동 파악 기능 추가 - HTML Gelocation
+   - [x] 현재 위치 파악 안된 경우 alert 호출
+   - [ ] 
+
    
 
 

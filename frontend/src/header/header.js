@@ -3,19 +3,6 @@ import './header.css'
 import logo from './logo.png';
 import Modal from './Modal'
 
-export class Storage extends React.Component {
-
-    stored = null;
-
-    Save(data) {
-        this.stored = data;
-    }
-    
-    Load() {
-        return this.stored;
-    }
-}
-
 const Header=()=>{
 //현위치 검색 모달창을 가진 헤더
     return(

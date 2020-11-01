@@ -61,11 +61,11 @@ const Home = () => {
         }         
     })
   }
-
+/*
   useEffect(() => {
     getLocation()
   }, [])
-
+*/
     if(nFlag) {
       return <Redirect to='/roulette'></Redirect>
     }

@@ -30,10 +30,16 @@ const FindLocation = () => {
     script1.onload = () => {
       const { kakao } = window
       kakao.maps.load(() => {
+        let {lat, lng} = App.getPosition();
+        if(lat == undefined && lng == undefined)
+        {
+          lat = 33.450701;
+          lng = 126.570667;
+        }
         let container = document.getElementById('Mymap')
         let options = {
-          center: new kakao.maps.LatLng(37.506502, 127.053617),
-          level: 3,
+          center: new kakao.maps.LatLng(lat, lng),
+          level: 2,
         }
         const createdMap = new kakao.maps.Map(container, options)
         setMap(createdMap)       

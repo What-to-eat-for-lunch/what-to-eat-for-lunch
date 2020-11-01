@@ -19,7 +19,9 @@ const Home = () => {
   const [togetherPop, setTogetherPop] = useState(false);
   const togetherToggle = () => setTogetherPop(!togetherPop);
 
-  const [flag, setFlag] = useState(false);
+  const [nFlag, setNFlag] = useState(false);
+  const [vFlag, setVFlag] = useState(false);
+
 
   const getURL = (genre, lat, lng) => {
     return genre+'/'+lat+'/'+lng;
@@ -33,16 +35,26 @@ const Home = () => {
         else
         {
           // App에 응답 데이터 저장
-          App.Save(res.data);
+          App.setKeyword(res.data);
 
           // rerender후 페이지 이동 꼼수
-          setFlag(true);
+          if (genre != "채식") {
+            setNFlag(true);
+          }
+          else {
+            setVFlag(true);
+          }
         }         
     })
   }
-    if(flag) {
+    if(nFlag) {
       return <Redirect to='/roulette'></Redirect>
     }
+    if(vFlag){
+      return <Redirect to='/map'></Redirect>
+    }
+
+    let {lat, lng} = App.getPosition();
     return (<div className="body">
     <div className="container">
       <div>
@@ -65,12 +77,12 @@ const Home = () => {
               <UncontrolledPopover trigger="legacy" placement="right" isOpen={togetherPop} target="togetherPop" toggle={togetherToggle}>
                 <PopoverHeader>세부 분야</PopoverHeader>
                 <PopoverBody>
-                  <Button onClick={() => sendGet('genre','한식','126','32')} type="submit">한식</Button>{' '}
-                  <Button onClick={() => sendGet('genre','중식','126','32')}>중식</Button><br></br><br></br>
-                  <Button onClick={() => sendGet('genre','일식','126','32')}>일식</Button>{' '}
-                  <Button onClick={() => sendGet('genre','양식','126','32')}>양식</Button><br></br><br></br>
-                  <Button onClick={() => sendGet('genre','아시안','126','32')}>아시안</Button>{' '}
-                  <Button onClick={() => sendGet('genre','랜덤','126','32')}>랜덤</Button>
+                  <Button onClick={() => sendGet('genre','한식',lat,lng)} type="submit">한식</Button>{' '}
+                  <Button onClick={() => sendGet('genre','중식',lat,lng)}>중식</Button><br></br><br></br>
+                  <Button onClick={() => sendGet('genre','일식',lat,lng)}>일식</Button>{' '}
+                  <Button onClick={() => sendGet('genre','양식',lat,lng)}>양식</Button><br></br><br></br>
+                  <Button onClick={() => sendGet('genre','아시안',lat,lng)}>아시안</Button>{' '}
+                  <Button onClick={() => sendGet('genre','랜덤',lat,lng)}>랜덤</Button>
                 </PopoverBody>
               </UncontrolledPopover>
               </div>
@@ -79,12 +91,12 @@ const Home = () => {
           <tr>
             <td>
               <div id='vegan'>
-                <Button color="link" className='image' onClick={() => sendGet('genre','채식','126','32')}></Button>
+                <Button color="link" className='image' onClick={() => sendGet('genre','채식',lat,lng)}></Button>
               </div>
             </td>
             <td>
               <div id='cafe'>
-                <Button color="link" className='image' onClick={() => sendGet('genre','간식','126','32')}></Button>
+                <Button color="link" className='image' onClick={() => sendGet('genre','간식',lat,lng)}></Button>
               </div>
             </td>
           </tr>

@@ -1,5 +1,6 @@
 /* global kakao */
 import React, { useState, useEffect } from 'react'
+import * as App from '../App';
 
 const APP_KEY = 'dfa21c11ffd9592aa4e83b78260f76ae'
 const divBtnOpt = {
@@ -89,7 +90,7 @@ const FindLocation = () => {
 
         displayMarker(data[0]);    
         bounds.extend(new kakao.maps.LatLng(data[0].y, data[0].x));
-        console.log("위도(lat):"+data[0].y+"경도(lon):"+data[0].x);
+        App.setPosition(data[0].y,data[0].x);
         setlocationArr(data[0].y,data[0].x);
       }
     }

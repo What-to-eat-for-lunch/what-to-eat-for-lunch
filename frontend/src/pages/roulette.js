@@ -82,7 +82,7 @@ class roulette extends Component{
     //컴포넌트를 DOM에 부착(렌더링)
     render(){
       // App에 저장한 데이터 읽어오기
-      console.log(App.Load());
+      console.log(App.getKeyword());
       return(
           <div id="contents">
         <Link to="/"> 

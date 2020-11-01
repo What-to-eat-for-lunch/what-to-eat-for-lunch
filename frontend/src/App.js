@@ -8,14 +8,26 @@ import Header from './header/header';
 
 //import Header from './header/header'; //헤더파일 넣기
 
-let stored_data = null;
+let keywords = null;
+let positionData = [];
 
-export function Save(data) {
-    stored_data = data;
+// 룰렛에 사용할 2차 분류 키워드 get, set
+export function setKeyword(data) {
+    keywords = data;
 }
 
-export function Load() {
-    return stored_data;
+export function getKeyword() {
+    return keywords;
+}
+
+// 위치 정보 get, set
+export function setPosition(lat, lng) {
+    positionData['lat'] = lat;
+    positionData['lng'] = lng;
+}
+
+export function getPosition() {
+    return positionData;
 }
 
 const App=()=>{

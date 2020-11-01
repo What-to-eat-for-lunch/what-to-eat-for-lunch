@@ -15,6 +15,7 @@
   * django-rest-framework : v3.12.1
   * markdown : v3.3.1
   * django-filter : v2.4.0
+  * django-cors-headers : v3.5.0
 
 
 ## Install

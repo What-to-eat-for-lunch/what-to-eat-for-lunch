@@ -28,6 +28,10 @@ const Home = () => {
   }
 
   const sendGet = async (type, genre, lat, lng) => {
+    if (lat == undefined && lng == undefined) {
+      alert('위치 정보를 설정해주세요.')
+      return;
+    }
     const url = 'http://localhost:8000/lunch_parser/'+type + '/'+ getURL(genre,lat,lng)
     await axios.get(url).then(res => {
         if(res.data.length == 0)

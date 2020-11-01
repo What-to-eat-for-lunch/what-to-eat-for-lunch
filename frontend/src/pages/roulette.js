@@ -10,6 +10,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import jQuery from "jquery";
+import * as App from '../App';
 window.$ = window.jQuery = jQuery;
 
 
@@ -77,8 +78,11 @@ class roulette extends Component{
        });
    });
  }
+
     //컴포넌트를 DOM에 부착(렌더링)
     render(){
+      // App에 저장한 데이터 읽어오기
+      console.log(App.Load());
       return(
           <div id="contents">
         <Link to="/"> 

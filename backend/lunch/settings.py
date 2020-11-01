@@ -69,18 +69,18 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-            ],
+            ], 
         },
     },
 ]
 
 WSGI_APPLICATION = 'lunch.wsgi.application'
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = (
-       'http://localhost:3000',    #React 도메인
-       'http://localhost:8000',    #Django 도메인
-)
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000'
+    ]
 
 
 # Database

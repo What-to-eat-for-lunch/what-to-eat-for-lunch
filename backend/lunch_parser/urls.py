@@ -3,6 +3,6 @@ from .views import genre_view, keyword_view
 
 app_name = 'parser'
 urlpatterns = [
-    path('genre/<genretype>/<x>/<y>', genre_view.as_view()),
-    path('keyword/<keyword>/<x>/<y>', keyword_view.as_view()),
+    path('genre/<genretype>/<lat>/<lng>', genre_view.as_view()),
+    path('keyword/<keyword>/<lat>/<lng>', keyword_view.as_view()),
 ]

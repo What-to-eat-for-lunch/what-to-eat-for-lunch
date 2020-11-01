@@ -3,7 +3,7 @@ import json
 
 KAKAO_KEY = ""
 
-with open('../key.json') as json_file:
+with open('key.json') as json_file:
     json_data = json.load(json_file)
     KAKAO_KEY = json_data["KAKAO_KEY"]
 
@@ -37,6 +37,28 @@ class kakao_crawler:
                 else:    
                     keyword.add(temp[-1])
         return list(keyword)
+
+    def get_category(self, lat, lng):
+        category = set()
+        params['x'] = lng
+        params['y'] = lat
+        for n in range(1, 10):
+            params['page'] = n
+            result = requests.get('https://dapi.kakao.com/v2/local/search/category.json', headers=headers, params=params).json()
+            if result['meta']['is_end'] is True:
+                break
+            for i in result['documents']:
+                category.add(i['category_name'].split(' > ')[1])
+        
+        # 점심 식사 메뉴 함수라서 술집 제외, 간식은 다른 장르 있으므로 제외
+        if '술집' in category:
+            category.remove('술집')
+
+        if '간식' in category:
+            category.remove('간식')
+        return list(category)
+
+
 
     def get_place_data(self, keyword, lat, lng):
         result = []

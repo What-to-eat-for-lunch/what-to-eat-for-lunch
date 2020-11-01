@@ -10,6 +10,8 @@
   * jquery : v3.5.1
   * gsap :  v3.5.1
   * reactstrap : v8.7.0
+  * axios : v0.21.0
+    
 * Back-end
   * python : v3.8.5
   * django : v3.1.2
@@ -39,11 +41,12 @@ F : Front-end / B : Back-end
 |분류|요구사항|상세|구현|담당|
 |:--:|:--:|:--|--|--|
 |Front|페이지 디자인|페이지 상세 디자인|:heavy_check_mark:|🐰| 
+|Front|데이터 송수신|REST API 호출 구현|:heavy_check_mark:|🐵|
+|Front|Response 후 페이지 전환 | REST Request 후 응답오면 상황에 맞춰 페이지 전환|:x:|🐵|
 |F-01-01| 사용자 위치 설정|사용자의 위도, 경도를 얻어온다.|:heavy_check_mark:|🐰|
-|F-01-02| 분류 선택 | 같이 먹기, 다이어트, 디저트 분류 선택|:heavy_check_mark:|🐰|
-|F-01-03| 음식 분류 출력 | 선택한 분류 기준으로 음식 장르를 출력해준다. |:heavy_check_mark:|🐵|
-|F-02-01| 음식 세부 분류 선택 | 현재 위치 주변 선택한 장르에 해당하는 2차 분류 출력|:x:||
-|F-02-02| 세부 랜덤 선택 | 선택이 어려운 사람들을 위한 랜덤 기능|:x:||
+|F-01-02| 분류 선택 | 같이 먹기, 채식, 디저트 분류 선택|:heavy_check_mark:|🐰|
+|F-01-03| 음식 분류 선택 | 1차 분류 선택 후 페이지 전환 |:heavy_check_mark:|🐵|
+|F-01-04| 음식 랜덤 분류 | 1차 분류 랜덤 결정 후 페이지 전환|:heavy_check_mark:|🐵|
 |F-02-03| 룰렛| 룰렛을 돌려 랜덤으로 음식 메뉴 선택 |:heavy_check_mark:|🐰|
 |F-03-01| 주변 음식점 출력 | 선택한 분류에 해당하는 주변 음식점 리스트 출력|:x:|🐰|
 |F-03-02| 지도 API | 리스트에서 선택한 가게 위치를 지도상으로 보여준다 | :x: |🐰|
@@ -59,7 +62,15 @@ F : Front-end / B : Back-end
 ## REST API
 
 ## 순서도
-* React - Django 연동 후 업로드
+|Method|URL|View|설명|
+|--|--|--|--|
+|GET|/genere/[genretype]/[lat]/[lng]|genre_view.as_view()|**genretype : 1차 분류** <br> 2차 분류 크롤링 결과를 반환한다.|
+|GET|/keyword/[keyword]/[lat]/[lng]|keyword_view.as_view()|**keyword : 2차 분류** <br> 2차 분류에 해당하는 음식점의 이름, 위치를 반환한다.|
+  
+  - lat (Latitude) : 위도 / lng (Longitude) : 경도
+  - 1차 분류 : 한식, 일식, 양식, 중식 ...
+  - 2차 분류 : 고기, 샌드위치, 피자, 돈까스 ...
+
 
 ## 상세 페이지 디자인
 * 2020.10.31. 업로드 예정
@@ -87,9 +98,10 @@ F : Front-end / B : Back-end
    - [x] MTV 기반 M,V 설계
    - [x] 크롤링 클래스 설계 & 구현
    - [x] Django rest framework 적용
-   - [ ] React - Django 연동
+   - [x] React - Django 연동
    - [x] RESTful API 설계
    - [x] F-01-03 : popover 
+   - [x] sub category random
    
 
 

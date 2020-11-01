@@ -1,0 +1,58 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+  .header{
+      margin: 0 auto;
+      text-align: center;
+  }
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  td{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;  
+  }
+  .image{
+    background-size: cover;
+    width: 400px;
+    height:400px;
+  }
+
+  .image{
+    border-radius: 50px;
+    margin: 0;
+  }
+
+  .image:hover{
+    border-color: rgb(133, 168, 235);
+    border:solid;
+  }
+  #alone .image{
+    background-image: url("../img/alone.png");
+  }
+
+  #together .image{
+    background-image: url("../img/together.png");
+  }
+  
+  #vegan .image{
+    background-image: url("../img/vegan.png");
+  }
+  
+  #cafe .image{
+    background-image: url("../img/dessert.png");
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }

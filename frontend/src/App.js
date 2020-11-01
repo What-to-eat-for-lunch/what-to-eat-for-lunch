@@ -10,6 +10,7 @@ import Header from './header/header';
 
 let keywords = null;
 let positionData = [];
+let placeData = null;
 
 // 룰렛에 사용할 2차 분류 키워드 get, set
 export function setKeyword(data) {
@@ -30,10 +31,15 @@ export function getPosition() {
     return positionData;
 }
 
+export function setPlace(data) {
+    placeData = data;
+}
+
+export function getPlace() {
+    return placeData;
+}
+
 const App=()=>{
-
-
-
 
     return (
         <div>

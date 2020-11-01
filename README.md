@@ -25,19 +25,12 @@
 ```
 ### Frontend
 ```
-   npm install -g yarn
-   npm install -g create-react-app
-   npm install --save bootstrap (or yarn add bootstrap)
-   npm install react-router-dom --save
-   npm install gsap
+   yarn start
    
 ```
 ### Backend
 ```
-   pip install Django
-   pip install djangorestframework
-   pip install markdown
-   pip install django-filter
+   python manage.py runserver 8000
 ```
 
 ## 요구사항

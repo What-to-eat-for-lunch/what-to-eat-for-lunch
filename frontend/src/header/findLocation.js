@@ -98,6 +98,8 @@ const FindLocation = () => {
       createMap()    
     }, [])
 
+  
+
   return <div>
         <form class="form-inline mt-2 mt-md-0" action="/place='{text}'">
                 <input class="form-control mr-sm-2" type="text" placeholder="현위치입력" value={text} onChange={setInputText}/>

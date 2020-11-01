@@ -22,6 +22,16 @@ const Home = () => {
   const [nFlag, setNFlag] = useState(false);
   const [vFlag, setVFlag] = useState(false);
 
+  // 현재 위치 파악 함수
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } 
+  }
+  
+  function showPosition(position) {
+    App.setPosition(position.coords.latitude, position.coords.longitude);
+  }
 
   const getURL = (genre, lat, lng) => {
     return genre+'/'+lat+'/'+lng;
@@ -51,12 +61,19 @@ const Home = () => {
         }         
     })
   }
+
+  useEffect(() => {
+    getLocation()
+  }, [])
+
     if(nFlag) {
       return <Redirect to='/roulette'></Redirect>
     }
     if(vFlag){
       return <Redirect to='/map'></Redirect>
     }
+
+ 
 
     let {lat, lng} = App.getPosition();
     return (<div className="body">

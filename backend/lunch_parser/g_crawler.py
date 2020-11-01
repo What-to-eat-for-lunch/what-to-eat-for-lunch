@@ -12,7 +12,7 @@ params = {
     'key':GOOGLE_KEY,
     'radius':'2000',
     'type':'food',
-    'keyword':'pizza',
+    'keyword':'vegan',
     'language':'ko',
 }
 

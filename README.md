@@ -26,7 +26,6 @@
 ### Frontend
 ```
    yarn start
-   
 ```
 ### Backend
 ```
@@ -49,7 +48,7 @@ F : Front-end / B : Back-end
 |F-03-01| 주변 음식점 출력 | 선택한 분류에 해당하는 주변 음식점 리스트 출력|:x:|🐰|
 |F-03-02| 지도 API | 리스트에서 선택한 가게 위치를 지도상으로 보여준다 | :x: |🐰|
 |Back|카카오 맵 API|카카오 맵을 이용한 데이터 크롤링|:heavy_check_mark:|🐵|
-|Back|Google map API | 구글 맵을 이용해 비건 데이터 크롤링 | :x: | 🐵|
+|Back|Google map API | 구글 맵을 이용해 비건 데이터 크롤링 | :heavy_check_mark: | 🐵|
 |Back|통신 클래스|카카오 API와 REST API를 주고받는 클래스 설계|:heavy_check_mark:|🐵|
 |Back|파서 클래스|통신 클래스를 통해 받은 데이터를 가공 후 전송 |:heavy_check_mark:|🐵|
 |Back|RESTful API | 프론트와 통신하는 RESTful API 규약 설계|:heavy_check_mark:|🐵|
@@ -57,7 +56,7 @@ F : Front-end / B : Back-end
 |Back|React - Django 연동 | 연동 | :x: | 🐵|
 
 
-
+## REST API
 
 ## 순서도
 * React - Django 연동 후 업로드
@@ -83,7 +82,8 @@ F : Front-end / B : Back-end
    - [ ] 최종 디자인 수정
 
    **🐵 이동호**
-   - [x] BE 데이터 크롤링 테스트 - (카카오 MAP API)
+   - [x] 카카오 맵 API 연동
+   - [x] 구글 맵 API 연동
    - [x] MTV 기반 M,V 설계
    - [x] 크롤링 클래스 설계 & 구현
    - [x] Django rest framework 적용

@@ -42,7 +42,7 @@ F : Front-end / B : Back-end
 |:--:|:--:|:--|--|--|
 |Front|페이지 디자인|페이지 상세 디자인|:heavy_check_mark:|🐰| 
 |Front|데이터 송수신|REST API 호출 구현|:heavy_check_mark:|🐵|
-|Front|Response 후 페이지 전환 | REST Request 후 응답오면 상황에 맞춰 페이지 전환|:x:|🐵|
+|Front|Response 후 페이지 전환 | REST Request 후 응답오면 상황에 맞춰 페이지 전환|:heavy_check_mark:|🐵|
 |F-01-01| 사용자 위치 설정|사용자의 위도, 경도를 얻어온다.|:heavy_check_mark:|🐰|
 |F-01-02| 분류 선택 | 같이 먹기, 채식, 디저트 분류 선택|:heavy_check_mark:|🐰|
 |F-01-03| 음식 분류 선택 | 1차 분류 선택 후 페이지 전환 |:heavy_check_mark:|🐵|
@@ -56,7 +56,7 @@ F : Front-end / B : Back-end
 |Back|파서 클래스|통신 클래스를 통해 받은 데이터를 가공 후 전송 |:heavy_check_mark:|🐵|
 |Back|RESTful API | 프론트와 통신하는 RESTful API 규약 설계|:heavy_check_mark:|🐵|
 |Back|Django rest framework | Django rest framework 적용|:heavy_check_mark:|🐵|
-|Back|React - Django 연동 | 연동 | :x: | 🐵|
+|Back|React - Django 연동 | 연동 | :heavy_check_mark: | 🐵|
 
 
 ## REST API
@@ -102,6 +102,8 @@ F : Front-end / B : Back-end
    - [x] RESTful API 설계
    - [x] F-01-03 : popover 
    - [x] sub category random
+   - [ ] page redirect
+   - [ ] data save
    
 
 

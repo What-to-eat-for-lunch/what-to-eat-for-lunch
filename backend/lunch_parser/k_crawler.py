@@ -16,15 +16,14 @@ params = {
     'radius':'2000',
 }
 
-class data_crawler:
-
+class kakao_crawler:
     # genre에 해당하는 음식점들의 키워드 반환
     # ex) 양식 -> 피자, 햄버거, 이탈리안
-    def get_keyword(self, genre, x, y):
+    def get_keyword(self, genre, lat, lng):
         keyword = set()
         params['query'] = genre
-        params['x'] = x
-        params['y'] = y
+        params['x'] = lng
+        params['y'] = lat
         for n in range(1, 10):
             params['page'] = n
             result = requests.get('https://dapi.kakao.com/v2/local/search/keyword.json', headers=headers, params=params).json()
@@ -39,19 +38,16 @@ class data_crawler:
                     keyword.add(temp[-1])
         return list(keyword)
 
-    # keyword에 대한 장소 정보 반환
-    #   서가앤쿡 -> 장소 데이터
-    def get_place_data(self, keyword, x, y):
+    def get_place_data(self, keyword, lat, lng):
         result = []
         params['query'] = keyword
-        params['x'] = x
-        params['y'] = y
+        params['x'] = lng
+        params['y'] = lat
         for n in range(1, 10):
             params['page'] = n
-            result = requests.get('https://dapi.kakao.com/v2/local/search/keyword.json', headers=headers, params=params).json()
-            if result['meta']['is_end'] is True:
+            response = requests.get('https://dapi.kakao.com/v2/local/search/keyword.json', headers=headers, params=params).json()
+            if response['meta']['is_end'] is True:
                 break
-            for i in result['documents']:
-                result.append(i)
-        print(result)
+            for i in response['documents']:
+                result.append({'name':i['place_name'], 'lat':i['y'], 'lng':i['x']})
         return result

@@ -2,69 +2,59 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-  .header{
-      margin: 0 auto;
-      text-align: center;
-  }
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  td{
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 50px;
-    padding-bottom: 50px;  
-  }
-  .image{
-    background-size: cover;
-    width: 400px;
-    height:400px;
-  }
+.container{
+  width: 100vw;
+  height: auto;
+  bottom:100;    
+}
 
-  a#alone .image{
-    background-image: url("../img/alone.png");
-  }
-  
-  a#together .image{
-    background-image: url("../img/together.png");
-  }
-  
-  a#diet .image{
-    background-image: url("../img/diet.png");
-  }
-  
-  a#cafe .image{
-    background-image: url("../img/cafe.png");
-  }
+.bd-placeholder-img {
+font-size: 1.125rem;
+text-anchor: middle;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+td{
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;  
+}
+.image{
+background-size: cover;
+width: 200px;
+height:200px;
+}
 
-  .text{
-    background-color: #000000; opacity: 0;
-    padding-top: 10px;        
-  }
-  .text p{
-    padding-top: 400px;    
-  }
-  .image:hover .text{
-    opacity: 0.5;
-    text-align: center;
-    padding-bottom: 30px;
-    color: #ffffff;
-  }
-  
-  a:hover{
-    opacity: 0.5;
-    text-align: center;
-    font-size: 40px;
-    color: #ffffff;
-    
-  }
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-    }
-  }
+.image{
+border-radius: 50px;
+margin: 0;
+}
+
+.image:hover{
+border-color: rgb(133, 168, 235);
+border:solid;
+}
+#alone .image{
+background-image: url("../img/alone.png");
+}
+
+#together .image{
+background-image: url("../img/together.png");
+}
+
+#vegan .image{
+background-image: url("../img/vegan.png");
+}
+
+#cafe .image{
+background-image: url("../img/dessert.png");
+}
+
+@media (min-width: 768px) {
+.bd-placeholder-img-lg {
+  font-size: 3.5rem;
+}
+}

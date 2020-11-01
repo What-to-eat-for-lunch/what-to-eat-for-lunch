@@ -15,14 +15,10 @@ const Home=()=>{
   const [togetherPop, setTogetherPop] = useState(false);
   const togetherToggle = () => setTogetherPop(!togetherPop);
 
-    return <div className="container">
-      
-    <Header>
-        <h2><Link to="/">점심뭐먹지?</Link></h2>
-        <hr/>
-    </Header>
-    <div className="row">
-      <div className="col-lg-4">
+    return <div className="body">
+
+    <div className="container">
+      <div>
         <table>
           <tr>
             <td>

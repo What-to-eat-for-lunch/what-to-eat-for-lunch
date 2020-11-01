@@ -8,8 +8,6 @@ import { Linear } from '../../node_modules/gsap/gsap-core';
 import {confirmAlert} from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { Link } from 'react-router-dom';
-import Header from '../header/header';
-import Footer from '../footer/footer';
 import $ from 'jquery';
 import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
@@ -83,10 +81,6 @@ class roulette extends Component{
     render(){
       return(
           <div id="contents">
-            <Header>
-              <h2><Link to="/">점심뭐먹지?</Link></h2>
-               <hr/>
-             </Header>
         <Link to="/"> 
                 <button class="previous_step">이전단계로 돌아가기</button>
         </Link>

@@ -1,15 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react'
+import './header.css'
 import logo from './logo.png';
+import Modal from './Modal'
 
-class Header extends Component{
-    render(){
-        return <div style={{backgroundColor:'#DAD9FF', minWidth:'100%'}}>
-            <div className="header">
+const Header=()=>{
+//현위치 검색 모달창을 가진 헤더
+    return(
+        <div className='header'>
+            <div className="logo">
                 <a href='/'><img src={logo}/></a>
             </div>
-
-        </div>;
-    }
+          
+              <div class="form-inline">
+              <Modal buttonLabel={"현위치 설정"}></Modal>
+              </div>  
+            
+        </div>
+    ); 
 }
 
 export default Header;

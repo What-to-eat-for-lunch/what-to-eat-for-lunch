@@ -1,9 +1,5 @@
 /* global kakao */
 import React, { useState, useEffect } from 'react'
-import Header from '../header/header';
-import Footer from '../footer/footer';
-import { Link } from 'react-router-dom';
-import '../components/common/Button.css';
 
 const APP_KEY = 'dfa21c11ffd9592aa4e83b78260f76ae'
 const divBtnOpt = {
@@ -14,16 +10,15 @@ const divBtnOpt = {
   zIndex: '10',
 }
 
-const KakaoMap = () => {
-  const [map, setMap] = useState(null)
-  const [markerArr, setMarkerArr] = useState([])
-  const [locationArr, setLocationArr] = useState([])
+const FindLocation = () => {
+    const [text,setText]=useState("");
 
-  const getLocation = async id => {
-    const data = await fetch(`http://localhost:3000/data${id}.json`)
-    const dataJSON = await data.json()
-    setLocationArr(dataJSON.location)
-  }
+    const setInputText= e=>{
+      setText(e.target.value);
+    };
+
+  const [map, setMap] = useState(null)
+  const [locationArr, setlocationArr] = useState(null)
 
   //지도 생성
   const createMap = () => {
@@ -62,7 +57,7 @@ const KakaoMap = () => {
       //장소 검색 객체 생성
       var ps = new kakao.maps.services.Places(); 
       //키워드로 장소 검색 객체 생성
-      ps.keywordSearch('이태원 맛집', placesSearchCB);
+      ps.keywordSearch(text, placesSearchCB);
   }
 
   //맛집위치에 마커 표시
@@ -92,28 +87,24 @@ const KakaoMap = () => {
         var bounds = new kakao.maps.LatLngBounds();
         map.setCenter(new kakao.maps.LatLng(data[0].y, data[0].x));
 
-        for (var i=0; i<data.length; i++) {
-            displayMarker(data[i]);    
-            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-        }
+        displayMarker(data[0]);    
+        bounds.extend(new kakao.maps.LatLng(data[0].y, data[0].x));
+        console.log("위도(lat):"+data[0].y+"경도(lon):"+data[0].x);
+        setlocationArr(data[0].y,data[0].x);
       }
     }
     useEffect(() => {
-      getLocation(1) // location 정보 fetch
       createMap()    
     }, [])
 
-  return (
-    <div className="App">
-        <Link to="/roulette"> 
-                <button class="previous_step">이전단계로 돌아가기</button>
-        </Link>
-        <h2>맛집 추천 지도</h2>
-        <button class="right" onClick={createps}>검색</button>
-      
-      <div id="Mymap" style={{ width: '100vw', height: '100vh' }}></div>
+  return <div>
+        <form class="form-inline mt-2 mt-md-0" action="/place='{text}'">
+                <input class="form-control mr-sm-2" type="text" placeholder="현위치입력" value={text} onChange={setInputText}/>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onClick={createps}>검색</button>
+        </form>  
+      <br/>
+      <div id="Mymap" style={{ width: '400px', height: '200px' }}></div>
     </div>
-  )
 }
 
-export default KakaoMap
+export default FindLocation

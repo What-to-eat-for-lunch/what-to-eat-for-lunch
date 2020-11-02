@@ -72,21 +72,22 @@ class kakao_crawler:
 
 
     def get_place_data(self, keyword, lat, lng):
-        result = []
+        place_data = []
         params['query'] = keyword
         params['x'] = lng
         params['y'] = lat
         for n in range(1, 10):
             params['page'] = n
-            response = requests.get('https://dapi.kakao.com/v2/local/search/keyword.json', headers=headers, params=params)
+            result = requests.get('https://dapi.kakao.com/v2/local/search/keyword.json', headers=headers, params=params)
 
-            result_status = response.status_code
-            result = response.json()
+            result_status = result.status_code
+            result = result.json()
+
             if 200 is not result_status:
-                print('Error :' + response['code'] + ', Msg : ' + response['msg'])
+                print('Error :' + result['code'] + ', Msg : ' + result['msg'])
 
-            if response['meta']['is_end'] is True:
+            if result['meta']['is_end'] is True:
                 break
-            for i in response['documents']:
-                result.append({'name':i['place_name'], 'lat':i['y'], 'lng':i['x']})
-        return result
+            for i in result['documents']:
+                place_data.append({'name':i['place_name'], 'lat':i['y'], 'lng':i['x']})
+        return place_data

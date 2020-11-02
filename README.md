@@ -35,6 +35,16 @@
 ```
    python manage.py runserver 8000
 ```
+* KAKAO API 관련 키가 필요합니다.
+  * Backend 폴더에 key.json을 생성한 뒤 아래와 같이 입력합니다.
+      ```
+      {
+         "KAKAO_KEY" : "Your key number",
+         "GOOGLE_KEY": "Your key number"
+      }
+      ```
+      KAKAO API에서 REST API키를 발급받아 위에 입력하면 됩니다.   
+      GOOGLE_KEY는 채식 검색에 사용됩니다. 
 <hr>
 
 ## 요구사항
@@ -133,7 +143,7 @@ F : Front-end / B : Back-end
    - [x] vegan -> map
    - [x] 현재 위치 자동 파악 기능 추가 - HTML Gelocation
    - [x] 현재 위치 파악 안된 경우 alert 호출
-   - [ ] 
+   - [x] 키값 json으로 관리 기능 추가
 
    
 

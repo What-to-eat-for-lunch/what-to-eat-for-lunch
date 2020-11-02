@@ -78,7 +78,7 @@ class roulette extends Component{
             alert('주변에 추천드릴 음식점이 없어요 ㅜㅜ')
           else{
             //App에 응답 데이터 저장
-            App.setKeyword(res.data);
+            App.setData(res.data);
 
             return <Redirect to='/map'></Redirect>
           }
@@ -123,7 +123,7 @@ class roulette extends Component{
     //컴포넌트를 DOM에 부착(렌더링)
     render(){
       // App에 저장한 데이터 읽어오기
-      console.log(App.getKeyword());
+      console.log(App.getData());
       return(
           <div id="contents">
         <Link to="/"> 

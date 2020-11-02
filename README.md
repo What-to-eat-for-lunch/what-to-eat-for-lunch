@@ -54,15 +54,18 @@ F : Front-end / B : Back-end
 |분류|요구사항|상세|구현|담당|
 |:--:|:--:|:--|--|--|
 |Front|페이지 디자인|페이지 상세 디자인|:heavy_check_mark:|🐰| 
+|Front|페이지 구현|페이지 css, div 등 코딩|:heavy_check_mark:|🐰| 
 |Front|데이터 송수신|REST API 호출 구현|:heavy_check_mark:|🐵|
 |Front|Response 후 페이지 전환 | REST Request 후 응답오면 상황에 맞춰 페이지 전환|:heavy_check_mark:|🐵|
-|F-01-01| 사용자 위치 설정|사용자의 위도, 경도를 얻어온다.|:heavy_check_mark:|🐰|
+|F-01-01| 사용자 위치 자동 설정 |Home 페이지 접속 시 나의 위치를 얻어오는 기능|:heavy_check_mark:|🐵|
 |F-01-02| 분류 선택 | 같이 먹기, 채식, 디저트 분류 선택|:heavy_check_mark:|🐰|
-|F-01-03| 음식 분류 선택 | 1차 분류 선택 후 페이지 전환 |:heavy_check_mark:|🐵|
-|F-01-04| 음식 랜덤 분류 | 1차 분류 랜덤 결정 후 페이지 전환|:heavy_check_mark:|🐵|
-|F-02-03| 룰렛| 룰렛을 돌려 랜덤으로 음식 메뉴 선택 |:heavy_check_mark:|🐰|
-|F-03-01| 주변 음식점 출력 | 선택한 분류에 해당하는 주변 음식점 리스트 출력|:x:|🐰|
-|F-03-02| 지도 API | 리스트에서 선택한 가게 위치를 지도상으로 보여준다 | :x: |🐰|
+|F-01-03| 1차 분류 팝오버 | 같이 먹기 태그 1차 분류 팝 오버 기능 |:heavy_check_mark:|🐵|
+|F-02-01| 룰렛| 룰렛을 돌려 랜덤으로 음식 메뉴 선택 |:heavy_check_mark:|🐰|
+|F-02-02| 룰렛 데이터 조절| 분류 결과에 맞춰 룰렛의 데이터 출력 |:heavy_check_mark:|🐰|
+|F-02-03| 룰렛| 시작 버튼 누르면 돌아가는 애니메이션 |:heavy_check_mark:|🐰|
+|F-03-01| 지도 API | 리스트에서 선택한 가게 위치를 지도상으로 보여준다 | :heavy_check_mark: |🐵|
+|F-04-01| 로고 | 로고를 클릭하면 Home으로 이동 |:heavy_check_mark:|🐰|
+|F-04-02| 사용자 위치 설정 팝업 |카카오 API를 통해 나의 위치를 검색 후 설정하는 기능|:heavy_check_mark:|🐰|
 |Back|카카오 맵 API|카카오 맵을 이용한 데이터 크롤링|:heavy_check_mark:|🐵|
 |Back|Google map API | 구글 맵을 이용해 비건 데이터 크롤링 | :heavy_check_mark: | 🐵|
 |Back|통신 클래스|카카오 API와 REST API를 주고받는 클래스 설계|:heavy_check_mark:|🐵|
@@ -76,12 +79,16 @@ F : Front-end / B : Back-end
 ## REST API
 |Method|URL|View|설명|
 |--|--|--|--|
-|GET|/genere/[genretype]/[lat]/[lng]|genre_view.as_view()|**genretype : 1차 분류** <br> 2차 분류 크롤링 결과를 반환한다.|
+|GET|/genre/[genretype]/[lat]/[lng]|genre_view.as_view()|**genretype : 1차 분류** <br> 2차 분류 크롤링 결과를 반환한다.|
 |GET|/keyword/[keyword]/[lat]/[lng]|keyword_view.as_view()|**keyword : 2차 분류** <br> 2차 분류에 해당하는 음식점의 이름, 위치를 반환한다.|
   
   - lat (Latitude) : 위도 / lng (Longitude) : 경도
   - 1차 분류 : 한식, 일식, 양식, 중식 ...
   - 2차 분류 : 고기, 샌드위치, 피자, 돈까스 ...
+  
+  - Home에서 룰렛을 돌리기 위해서는 genre 를 호출해야 합니다.
+  - 룰렛 결과를 가지고 장소 정보를 얻기 위해서는 keyword를 호출해야합니다.
+  - keyword는 검색 조건이기 때문에 genre를 통하지 않고 바로 keyword 호출도 가능합니다.
 
 <hr>  
 

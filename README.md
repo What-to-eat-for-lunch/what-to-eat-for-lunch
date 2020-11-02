@@ -76,7 +76,7 @@ F : Front-end / B : Back-end
 <hr>  
 
 ## 상세 페이지 디자인
-![home](https://github.com/What-to-eat-for-lunch/what-to-eat-for-lunch/blob/main/readme_img/home.png)   
+![home](https://github.com/What-to-eat-for-lunch/what-to-eat-for-lunch/blob/main/readme_img/home.PNG)   
 1. Header 영역
 2. Logo : 클릭하면 홈으로 이동
 3. 음식 종류 버튼들 (혼밥, 같이밥, 채식, 디저트)
@@ -87,7 +87,7 @@ F : Front-end / B : Back-end
 8. 음식 장르 팝 오버
 9. 음식 장르 선택 버튼 (한식, 양식, 중식, 일식 ...)   
     
-![룰렛](https://github.com/What-to-eat-for-lunch/what-to-eat-for-lunch/blob/main/readme_img/roulette.png)
+![룰렛](https://github.com/What-to-eat-for-lunch/what-to-eat-for-lunch/blob/main/readme_img/roulette.PNG)
 1. Header
 2. 시작 버튼
 3. 룰렛 영역
@@ -95,7 +95,7 @@ F : Front-end / B : Back-end
 5. 음식점 추천 페이지 이동 버튼
 6. 이전 페이지로 이동
    
-![맵](https://github.com/What-to-eat-for-lunch/what-to-eat-for-lunch/blob/main/readme_img/map.pngg)
+![맵](/readme_img/map.PNG)
 1. Header
 2. 선택한 음식 2차 분류 출력 문자열
 3. 지도 api

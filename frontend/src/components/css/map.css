@@ -1,8 +1,4 @@
 .container .area {  
     padding-top: 50px;
-}
-
-.area .place-list {
-    width: 50px;
-    margin-left: 50px;
+    justify-content: center;
 }

@@ -8,7 +8,7 @@ with open('key.json') as json_file:
     KAKAO_KEY = json_data["KAKAO_KEY"]
 
 headers = {
-    'Authorization': KAKAO_KEY,
+    'Authorization': 'KakaoAK '+KAKAO_KEY,
 }
 
 params = {

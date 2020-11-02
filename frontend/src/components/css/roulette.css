@@ -19,16 +19,16 @@ position:absolute; left:165px; top:210px;z-index:9; width:150px; border-radius:1
 #wrap #gameContainer .board_start
 img{width:100%;}
 #wrap #gameContainer .board_bg{width:508px; height:508px; top:40px; left:0px; z-index: 2;}
-#wrap #gameContainer .board_bg img{width:100%;}
+#wrap #gameContainer .board_bg span{width:100%;}
 #wrap #gameContainer .board_on{width:508px; height:508px; top:40px; left:0px; z-index: 3; background-image: url('//img.babathe.com/upload/specialDisplay/htmlImage/2019/test/roulette_circle_bg.png');    background-size: 508px;
 }
-#wrap #gameContainer .board_on img{position:absolute; width:100px;top:115px; height:100px;}
-#wrap #gameContainer .board_on img:nth-child(1){    left: 55px;  transform: rotate( -60deg );  top: 120px;}
-#wrap #gameContainer .board_on img:nth-child(2){left: 62px;  transform: rotate( -113deg );  top: 286px;  }
-#wrap #gameContainer .board_on img:nth-child(3){  left: 208px;  top: 372px; transform: rotate(-180deg);}  
-#wrap #gameContainer .board_on img:nth-child(4){left: 351px; top: 286px;  transform: rotate(-245deg);}
-#wrap #gameContainer .board_on img:nth-child(5){ left: 351px;  top: 125px;  transform: rotate(-292deg);   }
-#wrap #gameContainer .board_on img:nth-child(6){  left: 205px;  top: 42px;  transform: rotate(5deg); }  
+#wrap #gameContainer .board_on span{position:absolute; width:100px;top:115px; height:100px;}
+#wrap #gameContainer .board_on span:nth-child(1){    left: 55px;  transform: rotate( -60deg );  top: 120px;}
+#wrap #gameContainer .board_on span:nth-child(2){left: 62px;  transform: rotate( -113deg );  top: 286px;  }
+#wrap #gameContainer .board_on span:nth-child(3){  left: 208px;  top: 372px; transform: rotate(-180deg);}  
+#wrap #gameContainer .board_on span:nth-child(4){left: 351px; top: 286px;  transform: rotate(-245deg);}
+#wrap #gameContainer .board_on span:nth-child(5){ left: 351px;  top: 125px;  transform: rotate(-292deg);   }
+#wrap #gameContainer .board_on span:nth-child(6){  left: 205px;  top: 42px;  transform: rotate(5deg); }  
 
 #wrap #gameContainer .obj.board_arrow{width:90px; height:105px; top:0px; left:195px; z-index: 5;}
 #wrap #gameContainer .char1{width:259px; height:246px; top:400px; left:90px; z-index: 1;}

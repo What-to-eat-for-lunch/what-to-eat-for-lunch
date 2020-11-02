@@ -21,11 +21,8 @@ const KakaoMap = () => {
   const [markerArr, setMarkerArr] = useState([])
   const [locationArr, setLocationArr] = useState([])
 
-  const getLocation = async id => {
-    const data = await fetch(`http://localhost:3000/data${id}.json`)
-    const dataJSON = await data.json()
-    setLocationArr(dataJSON.location)
-  }
+  let position = App.getPosition();
+  const data = App.getData();
 
   //지도 생성
   const createMap = () => {
@@ -36,55 +33,59 @@ const KakaoMap = () => {
     script1.onload = () => {
       const { kakao } = window
       kakao.maps.load(() => {
-        let container = document.getElementById('Mymap')
-        let [lat, lng] = App.getPosition()
+        let container = document.getElementById('listMap')
         let options = {
-          center: new kakao.maps.LatLng(lat, lng),
+          center: new kakao.maps.LatLng(position['lat'], position['lng']),
           level: 3,
         }
         const createdMap = new kakao.maps.Map(container, options)
+        displayMarker({'name':'내 위치', 'lat':position['lat'],'lng':position['lng']});
         setMap(createdMap)       
       })
     }
 
     const script2 = document.createElement('script')
     script2.async = true
-    script2.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${APP_KEY}&libraries=services&autoload=false`
+    script2.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${APP_KEY}&libraries=services,clusterer,drawing&autoload=false`
     document.head.appendChild(script2)
-
-    const script3 = document.createElement('script')
-    script3.async = true
-    script3.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${APP_KEY}&libraries=services,clusterer,drawing&autoload=false`
-    document.head.appendChild(script3)
-
   }
 
   //장소 검색 객체 생성
-  const createps=()=>{
+  const renewal=()=>{
       const { kakao } = window
-      //장소 검색 객체 생성
+      // 현위치 셋팅
+      const [lat, lng] = App.getPosition();
+      console.log(lat,lng)
+      let locPosition = new kakao.maps.LatLng(lat, lng)
+      displayMarker(locPosition);
       var ps = new kakao.maps.services.Places(); 
       //키워드로 장소 검색 객체 생성
       ps.keywordSearch('이태원 맛집', placesSearchCB);
   }
 
   //맛집위치에 마커 표시
-  function displayMarker(place){
+  function displayMarker(data){
     const { kakao } = window
      // 마커를 생성하고 지도에 표시합니다
-     var marker = new kakao.maps.Marker({
-      map: map,
-      position: new kakao.maps.LatLng(place.y, place.x) 
-  });
-  // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-  var infowindow = new kakao.maps.InfoWindow({zIndex:1});
-  // 마커에 클릭이벤트를 등록합니다
-  kakao.maps.event.addListener(marker, 'click', function() {
-      // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-      infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
-      infowindow.open(map, marker);
-  });
-}
+     let infoWindow = new kakao.maps.InfoWindow({zIndex:1});
+       let marker = new kakao.maps.Marker({
+         map : map,
+         position:new kakao.maps.LatLng(data['lat'],data['lng'])
+       });
+       kakao.maps.event.addListener(marker, 'click', function() {
+         infoWindow.setContent('<div style="padding:5px;font-size:12px;">' + data['name'] + '</div>')
+         infoWindow.open(map, marker);
+       })
+      marker.setMap(map);
+     }
+
+
+  function dataDisplay()
+  {
+    for(let i in data){
+      displayMarker(data[i]);  
+    }  
+  }
  
   //키워드 검색 완료시 호출되는 콜백함수
   function placesSearchCB (data, status, pagination) {
@@ -101,9 +102,10 @@ const KakaoMap = () => {
         }
       }
     }
+
     useEffect(() => {
-      getLocation(1) // location 정보 fetch
-      createMap()    
+      createMap()
+      dataDisplay()
     }, [])
 
   return (
@@ -112,12 +114,11 @@ const KakaoMap = () => {
                 <button class="previous_step">이전단계로 돌아가기</button>
         </Link>
         <h2>맛집 추천 지도</h2>
-        <button class="right" onClick={createps}>검색</button>
+        <button class="right" onClick={renewal}>갱신</button>
       
       <div className='container'>
         <div className ='area'>
-          <div id="Mymap" style={{ width: '50vw', height: '50vh' }}></div>
-          <div className='place-list'></div>
+          <div id="listMap" style={{ width: '70vw', height: '60vh' }}></div>
         </div>
       
       </div>

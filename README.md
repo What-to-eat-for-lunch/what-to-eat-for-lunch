@@ -87,7 +87,7 @@ F : Front-end / B : Back-end
 8. 음식 장르 팝 오버
 9. 음식 장르 선택 버튼 (한식, 양식, 중식, 일식 ...)   
     
-![룰렛](/readme_ing/rolutte.PNG)
+![룰렛](/readme_img/rolutte.PNG)
 1. Header
 2. 시작 버튼
 3. 룰렛 영역

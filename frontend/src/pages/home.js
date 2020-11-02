@@ -39,8 +39,12 @@ const Home = () => {
 
   const sendGet = async (type, genre, lat, lng) => {
     if (lat == undefined && lng == undefined) {
-      alert('위치 정보를 설정해주세요.')
-      return;
+      getLocation();
+      [lat, lng] = App.getPosition();
+      if(lat == undefined && lng == undefined){
+        alert('위치 정보를 설정해주세요.')
+        return;
+      }
     }
     const url = 'http://localhost:8000/lunch_parser/'+type + '/'+ getURL(genre,lat,lng)
     await axios.get(url).then(res => {
@@ -61,11 +65,8 @@ const Home = () => {
         }         
     })
   }
-/*
-  useEffect(() => {
-    getLocation()
-  }, [])
-*/
+  
+
     if(nFlag) {
       return <Redirect to='/roulette'></Redirect>
     }
@@ -73,7 +74,6 @@ const Home = () => {
       return <Redirect to='/map'></Redirect>
     }
 
- 
 
     let {lat, lng} = App.getPosition();
     return (<div className="body">

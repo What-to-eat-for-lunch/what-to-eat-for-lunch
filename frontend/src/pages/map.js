@@ -20,6 +20,7 @@ const KakaoMap = () => {
   const [map, setMap] = useState(null)
   const [markerArr, setMarkerArr] = useState([])
   const [locationArr, setLocationArr] = useState([])
+  const imgSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
 
   let position = App.getPosition();
   const data = App.getData();
@@ -39,7 +40,9 @@ const KakaoMap = () => {
           level: 3,
         }
         const createdMap = new kakao.maps.Map(container, options)
-        displayMarker({'name':'내 위치', 'lat':position['lat'],'lng':position['lng']});
+        let imgSize = new kakao.maps.Size(24,35);
+        let img = new kakao.maps.MarkerImage(imgSrc,imgSize);
+        displayMarker({'name':'내 위치', 'lat':position['lat'],'lng':position['lng']},img);
         setMap(createdMap)       
       })
     }
@@ -52,31 +55,27 @@ const KakaoMap = () => {
 
   //장소 검색 객체 생성
   const renewal=()=>{
-      const { kakao } = window
-      // 현위치 셋팅
-      const [lat, lng] = App.getPosition();
-      console.log(lat,lng)
-      let locPosition = new kakao.maps.LatLng(lat, lng)
-      displayMarker(locPosition);
-      var ps = new kakao.maps.services.Places(); 
-      //키워드로 장소 검색 객체 생성
-      ps.keywordSearch('이태원 맛집', placesSearchCB);
+    dataDisplay()
   }
 
   //맛집위치에 마커 표시
-  function displayMarker(data){
+  function displayMarker(data, img){
     const { kakao } = window
      // 마커를 생성하고 지도에 표시합니다
-     let infoWindow = new kakao.maps.InfoWindow({zIndex:1});
-       let marker = new kakao.maps.Marker({
+       const marker = new kakao.maps.Marker({
          map : map,
-         position:new kakao.maps.LatLng(data['lat'],data['lng'])
+         position: new kakao.maps.LatLng(data['lat'],data['lng']),
+         title:data['name'],
+         image: img,
+         clickable : true
        });
-       kakao.maps.event.addListener(marker, 'click', function() {
-         infoWindow.setContent('<div style="padding:5px;font-size:12px;">' + data['name'] + '</div>')
-         infoWindow.open(map, marker);
-       })
-      marker.setMap(map);
+       var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+  // 마커에 클릭이벤트를 등록합니다
+      kakao.maps.event.addListener(marker, 'click', function() {
+      // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+      infowindow.setContent('<div style="padding:5px;font-size:12px; justify-content: center">' + data['name']+'</div>');
+      infowindow.open(map, marker);
+  });
      }
 
 
@@ -104,9 +103,13 @@ const KakaoMap = () => {
     }
 
     useEffect(() => {
-      createMap()
       dataDisplay()
     }, [])
+
+    if(!map)
+    {
+      createMap();
+    }
 
   return (
     <div className="App">

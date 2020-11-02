@@ -26,7 +26,13 @@ class kakao_crawler:
         params['y'] = lat
         for n in range(1, 10):
             params['page'] = n
-            result = requests.get('https://dapi.kakao.com/v2/local/search/keyword.json', headers=headers, params=params).json()
+            result = requests.get('https://dapi.kakao.com/v2/local/search/keyword.json', headers=headers, params=params)
+            result_status = result.status_code
+            result = result.json()
+
+            if 200 is not result_status:
+                print('Error :' + result['code'] + ', Msg : ' + result['msg'])
+
             if result['meta']['is_end'] is True:
                 break
             for i in result['documents']:
@@ -44,7 +50,12 @@ class kakao_crawler:
         params['y'] = lat
         for n in range(1, 10):
             params['page'] = n
-            result = requests.get('https://dapi.kakao.com/v2/local/search/category.json', headers=headers, params=params).json()
+            result = requests.get('https://dapi.kakao.com/v2/local/search/category.json', headers=headers, params=params)
+            result_status = result.status_code
+            result = result.json()
+            if 200 is not result_status:
+                print('Error :' + result['code'] + ', Msg : ' + result['msg'])
+
             if result['meta']['is_end'] is True:
                 break
             for i in result['documents']:
@@ -67,7 +78,13 @@ class kakao_crawler:
         params['y'] = lat
         for n in range(1, 10):
             params['page'] = n
-            response = requests.get('https://dapi.kakao.com/v2/local/search/keyword.json', headers=headers, params=params).json()
+            response = requests.get('https://dapi.kakao.com/v2/local/search/keyword.json', headers=headers, params=params)
+
+            result_status = response.status_code
+            result = response.json()
+            if 200 is not result_status:
+                print('Error :' + response['code'] + ', Msg : ' + response['msg'])
+
             if response['meta']['is_end'] is True:
                 break
             for i in response['documents']:

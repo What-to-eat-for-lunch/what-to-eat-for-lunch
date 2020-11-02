@@ -19,8 +19,11 @@ class roulette extends Component{
 
     //렌더링 완료 후 실행되는 메소드
     componentDidMount(){
+      // App에 저장한 데이터 읽어오기
+      console.log(App.getData());
       var data;
-      var arrData=new Array("국밥","국수","고기","냉면","곰탕","해물");//배열선언
+      
+      const arrData=App.getData();//배열선언
       
       function iniGame(num){//룰렛 초기
          data=num;
@@ -44,7 +47,7 @@ class roulette extends Component{
          //룰렛 하단에 추천 음식 결과 출력
          $('#result').text("결과:"+result);
         //map.js로 이동하는 버튼 생성
-       var str='<button>맛집 추천 지도</button></a>';
+       var str='<a href="/map"><button>맛집 추천 지도</button></a>';
        $('#mapButton').html(str);
         
        document.getElementById('mapButton').onclick = function () {
@@ -79,8 +82,7 @@ class roulette extends Component{
           else{
             //App에 응답 데이터 저장
             App.setData(res.data);
-
-            return <Redirect to='/map'></Redirect>
+            
           }
         })
       }
@@ -90,10 +92,65 @@ class roulette extends Component{
       $(function() {
        var clicked  =0;
        
-       for(var i=0; i<arrData.length; i++){
+       for(var i=0; i<6; i++){
          $(".board_on").append('<span>'+arrData[i]+'</span>');
        }
-   
+       console.log(arrData.length);
+      //서버에서 가져온 데이터 배열 넣기
+      /*
+      for( var i=0;i<6;i++){
+        arrData.push(App.getData()[i]);
+      }
+      const size=arrData.size;
+
+      switch(size){//룰렛 데이터 갯수 6개 제한
+        case 6:
+          arrData=App.getData();
+          break;
+        case 5:
+          for(var i=0;i<size;i++){
+            arrData.push(App.getData()[i]);
+          }
+          arrData.push(App.getData()[0]);
+          break;
+         case 4:
+          for(var i=0;i<size;i++){
+            arrData.push(App.getData()[i]);
+          }
+          arrData.push(App.getData()[1]);
+          arrData.push(App.getData()[0]);
+          break;
+          case 3:
+            for(var i=0;i<size;i++){
+              arrData.push(App.getData()[i]);
+            }
+            arrData.push(App.getData()[2]);
+            arrData.push(App.getData()[1]);
+            arrData.push(App.getData()[0]);
+            break;
+            case 2:
+              for(var i=0;i<2;i++){
+                arrData.push(App.getData()[i]);
+              }
+              arrData.push(App.getData()[2]);
+              arrData.push(App.getData()[1]);
+              arrData.push(App.getData()[0]);
+              break;
+            case 1:
+                for(var i=0;i<3;i++){
+                  arrData.push(App.getData()[0]);
+                  arrData.push(App.getData()[1]);
+                }
+                break;
+            default:
+              for( var i=0;i<6;i++){
+                arrData.push(App.getData()[i]);
+              }
+              break;     
+      }
+      */
+
+
        $(".join").on("mousedown",function(e){
          if( clicked <= 0){    iniGame(Math.floor(Math.random() *6));    }
          else  if( clicked >=1 ){   
@@ -122,8 +179,7 @@ class roulette extends Component{
 
     //컴포넌트를 DOM에 부착(렌더링)
     render(){
-      // App에 저장한 데이터 읽어오기
-      console.log(App.getData());
+      
       return(
           <div id="contents">
         <Link to="/"> 

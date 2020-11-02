@@ -4,6 +4,8 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import { Link } from 'react-router-dom';
 import '../components/common/Button.css';
+import '../components/css/map.css';
+import * as App from '../App';
 
 const APP_KEY = 'dfa21c11ffd9592aa4e83b78260f76ae'
 const divBtnOpt = {
@@ -35,8 +37,9 @@ const KakaoMap = () => {
       const { kakao } = window
       kakao.maps.load(() => {
         let container = document.getElementById('Mymap')
+        let [lat, lng] = App.getPosition()
         let options = {
-          center: new kakao.maps.LatLng(37.506502, 127.053617),
+          center: new kakao.maps.LatLng(lat, lng),
           level: 3,
         }
         const createdMap = new kakao.maps.Map(container, options)
@@ -111,7 +114,14 @@ const KakaoMap = () => {
         <h2>맛집 추천 지도</h2>
         <button class="right" onClick={createps}>검색</button>
       
-      <div id="Mymap" style={{ width: '100vw', height: '100vh' }}></div>
+      <div className='container'>
+        <div className ='area'>
+          <div id="Mymap" style={{ width: '50vw', height: '50vh' }}></div>
+          <div className='place-list'></div>
+        </div>
+      
+      </div>
+      
     </div>
   )
 }

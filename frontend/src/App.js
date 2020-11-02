@@ -13,11 +13,11 @@ let positionData = [];
 let placeData = null;
 
 // 룰렛에 사용할 2차 분류 키워드 get, set
-export function setKeyword(data) {
+export function setData(data) {
     keywords = data;
 }
 
-export function getKeyword() {
+export function getData() {
     return keywords;
 }
 

@@ -3,6 +3,7 @@
 /* Padding below the footer and lighter body text */
 
 .container{
+  display: flex;
   width: 100vw;
   height: auto;
   bottom:100;    

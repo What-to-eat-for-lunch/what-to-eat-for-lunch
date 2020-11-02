@@ -53,7 +53,7 @@ const Home = () => {
         else
         {
           // App에 응답 데이터 저장
-          App.setKeyword(res.data);
+          App.setData(res.data);
 
           // rerender후 페이지 이동 꼼수
           if (genre != "채식") {

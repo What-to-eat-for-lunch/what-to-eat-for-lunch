@@ -90,65 +90,61 @@ class roulette extends Component{
     
 
       $(function() {
-       var clicked  =0;
+       var clicked  =0;     
        
-       for(var i=0; i<6; i++){
-         $(".board_on").append('<span>'+arrData[i]+'</span>');
-       }
-       console.log(arrData.length);
-      //서버에서 가져온 데이터 배열 넣기
-      /*
-      for( var i=0;i<6;i++){
-        arrData.push(App.getData()[i]);
-      }
-      const size=arrData.size;
+      const size=arrData.length;
+      console.log(size);
 
       switch(size){//룰렛 데이터 갯수 6개 제한
         case 6:
-          arrData=App.getData();
+          for(var i=0; i<size; i++){
+            $(".board_on").append('<span>'+arrData[i]+'</span>');
+          }
           break;
         case 5:
-          for(var i=0;i<size;i++){
-            arrData.push(App.getData()[i]);
+          for(var i=0; i<size; i++){
+            $(".board_on").append('<span>'+arrData[i]+'</span>');
           }
-          arrData.push(App.getData()[0]);
+          $(".board_on").append('<span>'+arrData[0]+'</span>');
           break;
          case 4:
-          for(var i=0;i<size;i++){
-            arrData.push(App.getData()[i]);
+          for(var i=0; i<size; i++){
+            $(".board_on").append('<span>'+arrData[i]+'</span>');
           }
-          arrData.push(App.getData()[1]);
-          arrData.push(App.getData()[0]);
+          $(".board_on").append('<span>'+arrData[1]+'</span>');
+          $(".board_on").append('<span>'+arrData[0]+'</span>');
           break;
           case 3:
-            for(var i=0;i<size;i++){
-              arrData.push(App.getData()[i]);
-            }
-            arrData.push(App.getData()[2]);
-            arrData.push(App.getData()[1]);
-            arrData.push(App.getData()[0]);
-            break;
+            for(var i=0; i<size; i++){
+            $(".board_on").append('<span>'+arrData[i]+'</span>');
+          }
+          $(".board_on").append('<span>'+arrData[2]+'</span>');
+          $(".board_on").append('<span>'+arrData[1]+'</span>');
+          $(".board_on").append('<span>'+arrData[0]+'</span>');
+          break;
             case 2:
-              for(var i=0;i<2;i++){
-                arrData.push(App.getData()[i]);
+              for(var i=0; i<2; i++){
+                $(".board_on").append('<span>'+arrData[2]+'</span>');
+                $(".board_on").append('<span>'+arrData[1]+'</span>');
+                $(".board_on").append('<span>'+arrData[0]+'</span>');
               }
-              arrData.push(App.getData()[2]);
-              arrData.push(App.getData()[1]);
-              arrData.push(App.getData()[0]);
+             
               break;
             case 1:
-                for(var i=0;i<3;i++){
-                  arrData.push(App.getData()[0]);
-                  arrData.push(App.getData()[1]);
-                }
-                break;
-            default:
-              for( var i=0;i<6;i++){
-                arrData.push(App.getData()[i]);
+              for(var i=0; i<3; i++){
+                $(".board_on").append('<span>'+arrData[0]+'</span>');
+                $(".board_on").append('<span>'+arrData[1]+'</span>');
               }
-              break;     
+             
+              break;
+            default:
+              for(var i=0; i<6; i++){
+                $(".board_on").append('<span>'+arrData[i]+'</span>');
+              }
+              break;    
       }
-      */
+      
+      
 
 
        $(".join").on("mousedown",function(e){

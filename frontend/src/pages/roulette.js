@@ -41,25 +41,22 @@ class roulette extends Component{
 
       //룰렛 돌린 후 메소드
       function endGame(){
-       var result=arrData[data];
+       const result=arrData[data];
          console.log("결과: " + result );
-       
+         $('#resultContainer').css("visibility","visible");
          //룰렛 하단에 추천 음식 결과 출력
          $('#result').text("결과:"+result);
-        //map.js로 이동하는 버튼 생성
-       var str='<a href="/map"><button>맛집 추천 지도</button></a>';
-       $('#mapButton').html(str);
         
-       document.getElementById('mapButton').onclick = function () {
+         document.getElementById('mapButton').onclick = function () {
           //위치 받아오기
-          let {lat, lng} = App.getPosition(); 
+         let {lat, lng} = App.getPosition(); 
           //서버로 데이터 전송 호출
-          sendData(result,lat,lng);
-
+          sendData(result,lat,lng);  };
+      
+          
       };
 
-      };
-
+      
       
       //URL설정
       const getURL=(keyword, lat, lng)=>{
@@ -84,7 +81,9 @@ class roulette extends Component{
             App.setData(res.data);
             
           }
-        })
+        });
+
+        return <Redirect to='/map'></Redirect>
       }
 
     
@@ -189,7 +188,9 @@ class roulette extends Component{
               </div>
               <div id="resultContainer">
                   <h3 id="result"></h3>
-                  <span id="mapButton"></span>
+                 
+                  <Link to="/map"><button id="mapButton">맛집 추천 지도</button></Link>
+           
               </div>    
           </div>
           <footer/>

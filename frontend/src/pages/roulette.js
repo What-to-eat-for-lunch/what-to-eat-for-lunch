@@ -65,25 +65,23 @@ class roulette extends Component{
 
       //서버로 데이터 전송
       const sendData= async(keyword,lat,lng)=>{
-        console.log("sendData:"+keyword+"/lat:"+lat+"/lng:"+lng);
         if (lat == undefined && lng == undefined) {
           alert('위치 정보를 설정해주세요.')
           return;
         }
         const url='http://localhost:8000/lunch_parser/keyword'+'/'+getURL(keyword,lat,lng)
-
         //axios 사용
+
         await axios.get(url).then(res=>{
           if(res.data.length==0)
             alert('주변에 추천드릴 음식점이 없어요 ㅜㅜ')
           else{
             //App에 응답 데이터 저장
             App.setData(res.data);
-            
+            return <Redirect to='/map'></Redirect>;
           }
         });
-
-        return <Redirect to='/map'></Redirect>
+ 
       }
 
     
